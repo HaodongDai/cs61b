@@ -22,7 +22,7 @@ public class LinkedListDeque<Type> {
 
     //* Constructor, creating an empty LinkedListDeque */
     public LinkedListDeque() {
-        int size = 0;
+        size = 0;
         //* create a circular sentinel node */
         sentinel = new Node(null,null,null);
         sentinel.prev = sentinel;
