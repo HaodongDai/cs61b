@@ -25,7 +25,7 @@ public class ArrayDeque<T> {
      *  ie. if the index is 0, then this should return the index of the last position
      *      in the array
      * */
-    public int minusOne(int index, int capacity) {
+    private int minusOne(int index, int capacity) {
         if (index == 0) {
             return capacity - 1;
         } else {
@@ -37,7 +37,7 @@ public class ArrayDeque<T> {
      *  ie. if the index is 7, then this should return the index of the first position
      *      in the array (0)
      * */
-    public int plusOne(int index, int capacity) {
+    private int plusOne(int index, int capacity) {
         if (index == capacity - 1) {
             return 0;
         } else {
@@ -46,7 +46,7 @@ public class ArrayDeque<T> {
     }
 
     //* resize the array to the desired size */
-    public void resizeHelper(int newCapacity) {
+    private void resizeHelper(int newCapacity) {
         int capacity = array.length;
         int start = plusOne(nextFirst, capacity);
         int end = minusOne(nextLast, capacity);
@@ -65,7 +65,7 @@ public class ArrayDeque<T> {
         //arrayCapacity = newCapacity;
     }
 
-    public void resize() {
+    private void resize() {
         //expand
         int capacity = array.length;
         if (size == capacity) {
@@ -118,6 +118,9 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst() {
+        if (size == 0) {
+            return null;
+        }
         int index = plusOne(nextFirst,array.length);
         T ret = array[index];
         array[index] = null;
@@ -130,6 +133,9 @@ public class ArrayDeque<T> {
     }
 
     public T removeLast() {
+        if (size == 0) {
+            return null;
+        }
         int index = minusOne(nextLast,array.length);
         T ret = array[index];
         array[index] = null;
