@@ -4,7 +4,7 @@ public class ArrayDequeTest {
     //* Test whether the instantiated arraydeque is empty or not */
     public static void isEmptyTest1() {
         ArrayDeque<Integer> A = new ArrayDeque<>();
-        if (A.isEmpty() == true) {
+        if (A.isEmpty()) {
             System.out.println("isEmptyTest1 passed");
         } else {
             System.out.println("isEmptyTest2 failed");
@@ -16,7 +16,7 @@ public class ArrayDequeTest {
         ArrayDeque<Integer> A = new ArrayDeque<>();
         A.addFirst(1);
         A.addLast(2);
-        if (A.isEmpty() == false) {
+        if (!A.isEmpty()) {
             System.out.println("isEmptyTest2 passed");
         } else {
             System.out.println("isEmptyTest2 failed");
@@ -28,7 +28,7 @@ public class ArrayDequeTest {
         ArrayDeque<Integer> A = new ArrayDeque<>(); //the initial length is 8
         int i = 0;
         while (i < 7) {
-            A.addLast(i+1);
+            A.addLast(i + 1);
             i += 1;
         }
         A.addFirst(0);
@@ -89,7 +89,7 @@ public class ArrayDequeTest {
         int lengthBefore = A.getArrayLength();
         //now the arraydeque is from 0 to 31 (32 items)
         //remove 25 items in this array to make its usage ratio lower than 25%
-        for (int j = 0; j < 25; j ++) {
+        for (int j = 0; j < 25; j++) {
             A.removeLast();
         }
         System.out.println("\n" + "Now the arraydeque after removing 25 items is:");
@@ -115,7 +115,7 @@ public class ArrayDequeTest {
         }
         System.out.println("The expected 0-th item is 0, and the item retrieved from get method is " + A.get(0));
         System.out.println("The expected 5-th item is 5, and the item retrieved from get method is " + A.get(5));
-        for (int j = 0; j < 8; j ++) {
+        for (int j = 0; j < 8; j++) {
             if (j != A.get(j)) {
                 System.out.println("Items don't match , error! ");
             }

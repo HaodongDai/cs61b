@@ -1,20 +1,22 @@
 //* Array based Deque */
-public class ArrayDeque<Type> {
+public class ArrayDeque<T> {
     //* Declare variables */
-    public int size; //size of array
-    public Type[] array;
-    public int nextFirst; //front pointer
-    public int nextLast; //back pointer
-    public double usage; //keeping track of the usage
+    private int size; //size of array
+    private T[] array;
+    private int nextFirst; //front pointer
+    private int nextLast; //back pointer
+    private double usage; //keeping track of the usage
     //public int arrayCapacity; //the array length instead of size
 
     //* Create an empty ArrayDeque */
     public ArrayDeque() {
         //The initial array length should be 8, but the size is 0
         size = 0;
-        array = (Type[]) new Object[8]; //this generic syntax is different from that in LinkedListDeque
-        nextFirst = array.length - 1; // nextFirst pointer is always at the end of the array moving leftwards
-        nextLast = 0;  //nextLast pointer is always at the start of the array moving rightwards
+        array = (T[]) new Object[8]; //this generic syntax is different
+        nextFirst = array.length - 1;
+        // nextFirst pointer is always at the end of the array moving leftwards
+        nextLast = 0;
+        //nextLast pointer is always at the start of the array moving rightwards
         usage = 0; // the usage ratio of the array
         //arrayCapacity = 8; //array length, initial length is 8
     }
@@ -48,8 +50,8 @@ public class ArrayDeque<Type> {
         int capacity = array.length;
         int start = plusOne(nextFirst, capacity);
         int end = minusOne(nextLast, capacity);
-        Type[] tempArray = array;
-        array = (Type[]) new Object[newCapacity];
+        T[] tempArray = array;
+        array = (T[]) new Object[newCapacity];
         nextFirst = array.length - 1;
         nextLast = 0;
         //* the items in array are always on the right hand side of start point (first item) */
@@ -95,7 +97,7 @@ public class ArrayDeque<Type> {
         }
     }
 
-    public void addFirst(Type item) {
+    public void addFirst(T item) {
         usage = size * 1.0 / array.length;
         resize();
 
@@ -105,7 +107,7 @@ public class ArrayDeque<Type> {
         size += 1;
     }
 
-    public void addLast(Type item) {
+    public void addLast(T item) {
         usage = size * 1.0 / array.length;
         resize();
 
@@ -115,9 +117,9 @@ public class ArrayDeque<Type> {
         size += 1;
     }
 
-    public Type removeFirst() {
+    public T removeFirst() {
         int index = plusOne(nextFirst,array.length);
-        Type ret = array[index];
+        T ret = array[index];
         array[index] = null;
         nextFirst = index;
         size -= 1;
@@ -127,9 +129,9 @@ public class ArrayDeque<Type> {
         return ret;
     }
 
-    public Type removeLast() {
+    public T removeLast() {
         int index = minusOne(nextLast,array.length);
-        Type ret = array[index];
+        T ret = array[index];
         array[index] = null;
         nextLast = index;
         size -= 1;
@@ -139,7 +141,7 @@ public class ArrayDeque<Type> {
         return ret;
     }
 
-    public Type get(int x) {
+    public T get(int x) {
         if (x < 0 || x > array.length - 1) {
             return null;
         }
